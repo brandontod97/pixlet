@@ -618,7 +618,7 @@ func newMarquee(
 		offset_start     starlark.Int
 		offset_end       starlark.Int
 		scroll_direction starlark.String
-		scroll_speed	 starlark.Float32
+		scroll_speed	 starlark.Float
 	)
 
 	if err := starlark.UnpackArgs(
