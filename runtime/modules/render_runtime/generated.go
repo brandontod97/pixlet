@@ -618,7 +618,7 @@ func newMarquee(
 		offset_start     starlark.Int
 		offset_end       starlark.Int
 		scroll_direction starlark.String
-		scroll_speed	 starlark.Float
+		scroll_speed	 starlark.Float32
 	)
 
 	if err := starlark.UnpackArgs(
@@ -659,7 +659,7 @@ func newMarquee(
 
 	w.ScrollDirection = scroll_direction.GoString()
 	
-	w.ScrollSpeed = float(scroll_speed)
+	w.ScrollSpeed = float32(scroll_speed)
 
 	return w, nil
 }
