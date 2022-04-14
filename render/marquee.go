@@ -44,7 +44,7 @@ type Marquee struct {
 	OffsetStart     int    `starlark:"offset_start"`
 	OffsetEnd       int    `starlark:"offset_end"`
 	ScrollDirection string `starlark:"scroll_direction"`
-	ScrollSpeed     double    `starlark:"scroll_speed"`
+	ScrollSpeed     double `starlark:"scroll_speed"`
 }
 
 func (m Marquee) FrameCount() int {
