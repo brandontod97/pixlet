@@ -44,6 +44,7 @@ type Marquee struct {
 	OffsetStart     int    `starlark:"offset_start"`
 	OffsetEnd       int    `starlark:"offset_end"`
 	ScrollDirection string `starlark:"scroll_direction"`
+	ScrollSpeed     double    `starlark:"scroll_speed"`
 }
 
 func (m Marquee) FrameCount() int {
@@ -118,10 +119,10 @@ func (m Marquee) Paint(bounds image.Rectangle, frameIdx int) image.Image {
 		offset = 0
 	} else if frameIdx <= loopIdx {
 		// first scroll child out of view
-		offset = offstart - frameIdx
+		offset = (offstart * ScrollSpeed) - frameIdx
 	} else if frameIdx <= endIdx {
 		// then, scroll back into view
-		offset = offend + (endIdx - frameIdx)
+		offset = (offend * ScrollSpeed) + (endIdx - frameIdx)
 	} else {
 		// if more than FrameCount frames are requested,
 		// freeze marquee at final frame
