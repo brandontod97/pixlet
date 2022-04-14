@@ -630,7 +630,7 @@ func newMarquee(
 		"offset_start?", &offset_start,
 		"offset_end?", &offset_end,
 		"scroll_direction?", &scroll_direction,
-		"scroll_speed?", &scroll_speed
+		"scroll_speed?", &scroll_speed,
 	); err != nil {
 		return nil, fmt.Errorf("unpacking arguments for Marquee: %s", err)
 	}
@@ -700,9 +700,11 @@ func (w *Marquee) Attr(name string) (starlark.Value, error) {
 	case "scroll_direction":
 
 		return starlark.String(w.ScrollDirection), nil
+		
 	case "scroll_speed":
 		
 		return starlark.Float(w.ScrollSpeed), nil
+		
 	default:
 		return nil, nil
 	}
