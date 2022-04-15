@@ -119,10 +119,10 @@ func (m Marquee) Paint(bounds image.Rectangle, frameIdx int) image.Image {
 		offset = 0
 	} else if frameIdx <= loopIdx {
 		// first scroll child out of view
-		offset = int(float32(offstart) * m.ScrollSpeed) - frameIdx
+		offset = offstart - int(float32(frameIdx) * m.ScrollSpeed)
 	} else if frameIdx <= endIdx {
 		// then, scroll back into view
-		offset = int(float32(offend) * m.ScrollSpeed) + (endIdx - frameIdx)
+		offset = offend + (endIdx - int(float32(frameIdx) * m.ScrollSpeed))
 	} else {
 		// if more than FrameCount frames are requested,
 		// freeze marquee at final frame
